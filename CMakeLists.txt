@@ -16,8 +16,6 @@ pkg_check_modules(GTKMM REQUIRED gtkmm-4.0)
 set(CMAKE_CXX_STANDARD 26)
 
 add_executable(Killer main.cpp
-        src/Killer.cpp
-        src/Killer.hpp
         src/ui/SettingsWindow.cpp
         src/ui/SettingsWindow.hpp) #TODO: o .hpp vem junto aqui? checar depois
 
