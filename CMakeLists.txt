@@ -17,7 +17,9 @@ set(CMAKE_CXX_STANDARD 26)
 
 add_executable(Killer main.cpp
         src/ui/SettingsWindow.cpp
-        src/ui/SettingsWindow.hpp) #TODO: o .hpp vem junto aqui? checar depois
+        src/ui/SettingsWindow.hpp
+        src/core/HyprlandIPC.cpp
+        src/core/HyprlandIPC.hpp) #TODO: o .hpp vem junto aqui? checar depois
 
 #target_include_directories(Killer PRIVATE ${GTK4_INCLUDE_DIRS})
 #target_link_libraries(Killer PRIVATE ${GTK4_LIBRARIES})
