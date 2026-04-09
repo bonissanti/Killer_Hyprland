@@ -25,4 +25,14 @@ add_executable(Killer main.cpp
 #target_link_libraries(Killer PRIVATE ${GTK4_LIBRARIES})
 
 target_include_directories(Killer PRIVATE ${GTKMM_INCLUDE_DIRS})
-target_link_libraries(Killer PRIVATE ${GTKMM_LIBRARIES})
+target_link_libraries(Killer PRIVATE ${GTKMM_LIBRARIES} ${GTK_LAYER_SHELL_LIBRARIES})
+
+# Unit tests
+pkg_check_modules(CRITERION REQUIRED criterion)
+
+add_executable(unit_tests
+        tests/test_hyprland_ipc.cpp
+        src/core/HyprlandIPC.cpp)
+
+target_include_directories(unit_tests PRIVATE ${CRITERION_INCLUDE_DIRS})
+target_link_libraries(unit_tests PRIVATE ${CRITERION_LIBRARIES})

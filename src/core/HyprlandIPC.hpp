@@ -19,6 +19,7 @@ class HyprlandIPC
     void HandleMessage(const std::string& message);
 
     void SetPath(const std::string& path);
+    std::string GetPath() const;
 
 };
 
