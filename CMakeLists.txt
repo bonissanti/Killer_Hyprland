@@ -28,6 +28,7 @@ target_include_directories(Killer PRIVATE ${GTKMM_INCLUDE_DIRS})
 target_link_libraries(Killer PRIVATE ${GTKMM_LIBRARIES} ${GTK_LAYER_SHELL_LIBRARIES})
 
 target_include_directories(Killer PRIVATE ${GTK_LAYER_SHELL_INCLUDE_DIRS})
+
 # Unit tests
 pkg_check_modules(CRITERION REQUIRED criterion)
 
@@ -37,3 +38,7 @@ add_executable(unit_tests
 
 target_include_directories(unit_tests PRIVATE ${CRITERION_INCLUDE_DIRS})
 target_link_libraries(unit_tests PRIVATE ${CRITERION_LIBRARIES})
+
+# Pipeline
+enable_testing()
+add_test(NAME hyprland_ipc_tests COMMAND unit_tests)
