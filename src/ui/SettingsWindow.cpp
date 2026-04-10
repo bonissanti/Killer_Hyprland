@@ -1,5 +1,4 @@
 #include "SettingsWindow.hpp"
-
 #include <gtk4-layer-shell/gtk4-layer-shell.h>
 
 SettingsWindow::SettingsWindow()
