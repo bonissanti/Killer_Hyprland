@@ -31,5 +31,5 @@ jobs:
 
       - name: Run Tests
         env:
-          XDG_RUNTIME_DIR: /tmp
+          XDG_RUNTIME_DIR: /mock
         run: ctest --test-dir build -C ${{env.BUILD_TYPE}} --output-on-failure
