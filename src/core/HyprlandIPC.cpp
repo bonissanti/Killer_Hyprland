@@ -14,8 +14,7 @@ HyprlandIPC::HyprlandIPC()
 }
 
 HyprlandIPC::~HyprlandIPC()
-{
-}
+= default;
 
 void HyprlandIPC::HandleMessage(const std::string& message)
 {
@@ -30,7 +29,7 @@ void HyprlandIPC::HandleMessage(const std::string& message)
     sockaddr_un addr = { .sun_family = AF_UNIX };
     std::strncpy(addr.sun_path, this->path.c_str(), sizeof(addr.sun_path) - 1);
 
-    if (connect(fd, (struct sockaddr*)&addr, sizeof(addr)) == -1)
+    if (connect(fd, reinterpret_cast<struct sockaddr*>(&addr), sizeof(addr)) == -1)
     {
         std::print("ERROR: connection failed to {}", this->path);
         close(fd);

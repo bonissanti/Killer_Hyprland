@@ -1,0 +1,35 @@
+name: CMake on a single platform
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  BUILD_TYPE: Debug
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm base-devel cmake gtk4 gtkmm-4.0 gtk4-layer-shell criterion wayland wayland-protocols pkg-config
+
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+      - name: Build
+        run: cmake --build build --config ${{env.BUILD_TYPE}} -j $(nproc)
+
+      - name: Run Tests
+        env:
+          XDG_RUNTIME_DIR: /mock
+        run: ctest --test-dir build -C ${{env.BUILD_TYPE}} --output-on-failure
