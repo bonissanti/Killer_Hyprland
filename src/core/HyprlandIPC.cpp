@@ -10,9 +10,7 @@ HyprlandIPC::HyprlandIPC()
     const char* signature = "HYPRLAND_INSTANCE_SIGNATURE";
 
     const std::string path = std::string(runtime) + "/hypr/" + std::string(signature) + "/.socket.sock";
-
-    if (!path.empty())
-        this->SetPath(path);
+    this->SetPath(path);
 }
 
 HyprlandIPC::~HyprlandIPC()
