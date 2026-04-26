@@ -19,9 +19,7 @@ add_executable(Killer main.cpp
         src/ui/SettingsWindow.cpp
         src/ui/SettingsWindow.hpp
         src/core/HyprlandIPC.cpp
-        src/core/HyprlandIPC.hpp
-        src/llm/LlmClient.cpp
-        src/llm/LlmClient.hpp) #TODO: o .hpp vem junto aqui? checar depois
+        src/core/HyprlandIPC.hpp)
 
 #target_include_directories(Killer PRIVATE ${GTK4_INCLUDE_DIRS})
 #target_link_libraries(Killer PRIVATE ${GTK4_LIBRARIES})
